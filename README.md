@@ -8,3 +8,10 @@ General Overview
 
 - [ ] General installation
 - [ ] Test minimum working
+
+## Installation process
+
+- Nextjs
+- Shadcn/ui
+- Authjs
+  - `npx auth secret`

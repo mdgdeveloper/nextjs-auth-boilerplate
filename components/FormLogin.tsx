@@ -41,7 +41,7 @@ const FormLogin = () => {
                             <FormItem>
                                 <FormLabel>Username</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="email" {...field} />
+                                    <Input placeholder="email" type="email" {...field} />
                                 </FormControl>
                                 <FormDescription>
                                     Enter your email
@@ -57,7 +57,7 @@ const FormLogin = () => {
                             <FormItem>
                                 <FormLabel>Password</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="password" {...field} />
+                                    <Input placeholder="password" type="password" {...field} />
                                 </FormControl>
                                 <FormDescription>
                                     Enter your password
