@@ -7,3 +7,4 @@ General Overview
 ## Pending Tasks
 
 - [ ] General installation
+- [ ] Test minimum working
