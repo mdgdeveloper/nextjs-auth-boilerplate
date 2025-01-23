@@ -15,6 +15,8 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { signIn } from "@/auth";
+import { loginAction } from "@/app/actions/auth-action";
 
 const FormLogin = () => {
     // 1. Define your form
@@ -29,6 +31,7 @@ const FormLogin = () => {
     // 2. Define a submit handler
     const onSubmit = async (values: z.infer<typeof loginSchema>) => {
         console.log(values);
+        await loginAction(values);
     }
     return (
         <div className="bg-white p-8 rounded-lg shadow-lg w-96">

@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import authConfig from "./auth.config"
+import { NextResponse } from "next/server";
 
 export const config = {
   matcher: [
@@ -12,4 +13,6 @@ export const config = {
 
 const { auth } = NextAuth(authConfig)
 
-export default auth();
+export default auth((req) => {
+  return NextResponse.next();
+});
