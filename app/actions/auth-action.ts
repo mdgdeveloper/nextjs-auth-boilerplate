@@ -1,6 +1,7 @@
 "use server";
 
 import { signIn } from "@/auth";
+import { signOut } from "next-auth/react";
 import { loginSchema } from "@/lib/zod";
 import { z } from "zod";
 

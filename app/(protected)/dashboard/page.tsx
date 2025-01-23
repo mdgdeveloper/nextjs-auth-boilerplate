@@ -1,4 +1,5 @@
 import { auth } from "@/auth"
+import LogoutButton from "@/components/LogoutButton"
 
 const DashboardPage = async () => {
   const session = await auth()
@@ -8,8 +9,9 @@ const DashboardPage = async () => {
   }
 
   return (
-    <div className="container">
+    <div className="flex items-center justify-center h-screen flex-col">
       <pre>{JSON.stringify(session, null, 2)}</pre>
+      <LogoutButton />
     </div>
   )
 }
