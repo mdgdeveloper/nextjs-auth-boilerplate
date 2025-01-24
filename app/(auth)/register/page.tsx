@@ -1,6 +1,10 @@
+import FormRegister from "@/components/FormRegister"
+
 const RegisterPage = () => {
     return (
-        <div>RegisterPage</div>
+        <div className="flex justify-center items-center h-screen">
+            <FormRegister />
+        </div>
     )
 }
 
