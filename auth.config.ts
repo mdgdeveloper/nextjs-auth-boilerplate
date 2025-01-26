@@ -4,6 +4,7 @@ import Credentials from "next-auth/providers/credentials"
 import { loginSchema } from "./lib/zod"
 import bcrypt from "bcryptjs";
 import { db } from "./lib/db";
+import { nanoid } from "nanoid";
 
 
 
@@ -40,6 +41,43 @@ export default {
         if (!isValid) {
           throw new Error("Invalid credentials")
         }
+
+        // Verirficacion del email
+        if (!user.emailVerified) {
+          const verificationRequestExists = await db.verificationToken.findFirst({
+            where: {
+              identifier: user.email,
+            }
+          })
+
+          // Si existe token, se elimina:
+          if (verificationRequestExists) {
+            await db.verificationToken.delete({
+              where: {
+                identifier: user.email
+              }
+            })
+          }
+
+          const token = nanoid()
+
+          // Creamos nuevo verification token
+          await db.verificationToken.create({
+            data: {
+              identifier: user.email,
+              token,
+              expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
+            }
+          })
+
+          // Enviar email
+          // Configurar con un sistema de envio de mail
+
+          // Error: Email no verificado
+          throw new Error("Verification email sent")
+
+        }
+
 
         return user
 

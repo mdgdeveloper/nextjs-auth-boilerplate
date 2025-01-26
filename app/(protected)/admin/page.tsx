@@ -5,7 +5,7 @@ const AdminPage = async () => {
 
     const session = await auth()
 
-    if (session?.user?.role !== "admin") {
+    if (session?.user?.role !== "ADMIN") {
         return <div>Unauthorized</div>
     }
 

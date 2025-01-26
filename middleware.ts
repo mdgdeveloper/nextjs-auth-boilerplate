@@ -28,8 +28,6 @@ const adminRoutes = [
   "/admin"
 ]
 
-const fullUrl = process.env.NEXTURL_BASE || "http://localhost:3000"
-
 export default auth((req) => {
   const { nextUrl, auth } = req
 
@@ -37,11 +35,11 @@ export default auth((req) => {
   const isAdmin = auth?.user?.role === "ADMIN"
 
   if (!publicRoutes.includes(nextUrl.pathname) && !isLoggedIn) {
-    return NextResponse.redirect(`${fullUrl}/login`)
+    return NextResponse.redirect(new URL("/login", nextUrl))
   }
 
   if (adminRoutes.includes(nextUrl.pathname) && !isAdmin) {
-    return NextResponse.redirect(`${fullUrl}/dashboard`)
+    return NextResponse.redirect(new URL("/dashboard", nextUrl))
   }
 
   return NextResponse.next();
